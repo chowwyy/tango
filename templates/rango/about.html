@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+
+  <head>
+    <title>Rango</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}" />
+    <script src="{% static "js/jquery.js" %}"></script>
+  </head>
+
+  <body>
+    <h1>About Me</h1><br />
+      <strong>{{ boldmessage }}</strong><br />
+    <div>
+      <a href="/">Home</a><br />
+      <img src="{{ MEDIA_URL}}freida.jpg" alt="Picture of Freida" /> <!-- New line -->
+    </div>
+  </body>
+
+</html>
