@@ -1,50 +1,38 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %} 
 
-{% load staticfiles %} <!-- New line -->
+{% block title %}
+	Home
+{% endblock %}
 
-<html>
+{% block body %}
+<h1>Rango says...</h1>
+<h3>hey there partner!</h3>
 
-  <head>
-    <title>Rango</title>
-    <link rel="stylesheet" href="{% static "css/base.css" %}" />
-    <script src="{% static "js/jquery.js" %}"></script>
-  </head>
+	<h1>Most Liked Categories</h1>
+	<div>
+	{% if categories %}
+	<ul>
+		{% for category in categories %}
+		<li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+	</div>
 
-  <body>
-    <h1>Rango says...</h1>
-    <div>hey there partner!</div>
+	<h1>Most Viewed Pages</h1>
+	<div>
+	{% if pages %}
+	<ul>
+		{% for page in pages %}
+			<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no pages present.</strong>
+	{% endif %}
 
-    <h1>Most Liked Categories</h1>
-    <div>
-    {% if categories %}
-    <ul>
-      {% for category in categories %}
-        <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-      <strong>There are no categories present.</strong>
-    {% endif %}
-    </div>
-
-    <h1>Most Viewed Pages</h1>
-    <div>
-    {% if pages %}
-    <ul>
-      {% for page in pages %}
-        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-      <strong>There are no pages present.</strong>
-    {% endif %}
-    </div>
-
-    <div>
-      <a href="/rango/add_category/">Add a New Category</a><br />
-      <a href="/rango/about/">About</a><br />
-      <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
-    </div>
-  </body>
-
-</html>
+	<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> 
+{% endblock %}
