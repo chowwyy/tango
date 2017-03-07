@@ -74,6 +74,6 @@ def add_page(request, category_name_slug):
 	return render(request, 'rango/add_page.html', context_dict)
 
 def about(request):
-    context = {'boldmessage': "My name is Freida. That's all you have to know."}
+    context = {'boldmessage': "My name is Rango. That's all you have to know."}
 
     return render(request, 'rango/about.html', context=context)
